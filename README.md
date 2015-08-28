@@ -133,7 +133,7 @@ app
 //bad
 use Request;
 ...
-public function bad()
+public function store()
 {
     $data = Request::all()
 }
@@ -141,7 +141,7 @@ public function bad()
 //good
 use Illuminate\Http\Request;
 ...
-public function good(Request $request)
+public function store(Request $request)
 {
     $data = $request->all()
 }
@@ -149,7 +149,7 @@ public function good(Request $request)
 
 ### 命名相關
 #### 資料表與欄位
-- 資料表名稱請使用複數英文並使用蛇底式命名法（snake_case）
+- 資料表名稱請使用**複數英文**並使用**蛇底式命名法（snake_case）**
 
 ```php
 // bad
@@ -160,18 +160,19 @@ Schema::create('user', ...
 Schema::create('users', ...
 ```
 
-- 多對多（或同性質）的 pivot table 請命名為 `{單數資料表A}_{單數資料表B}`，並按照英文字母排序
+- 多對多（或同性質）的 pivot table 請命名為`{單數資料表A}_{單數資料表B}`，並按照**英文字母順序排序**
 
 ```php
 // bad
-Schema::create('users_articles', ...
-Schema::create('user_article_mapping', ...
+Schema::create('articles_tags', ...
+Schema::create('article_tag_mapping', ...
+Schema::create('tag_article', ...
 
 // good
-Scheam::create('user_article', ...
+Scheam::create('article_tag', ...
 ```
 
-- 資料表欄位請使用蛇底式命名法（snake_case）且一律不加前綴字
+- 資料表欄位請使用**蛇底式命名法（snake_case）**且一律**不加前綴字**
 
 ```php
 //bad
@@ -194,7 +195,7 @@ $table->increment('p_id');
 $table->increment('id');
 ```
 
-- Foreign Key 一律為 `{單數資料表名稱}_id`
+- Foreign Key 一律為`{單數資料表名稱}_id`
 
 ```php
 // bad
@@ -206,7 +207,7 @@ $table->integer('user_id');
 ```
 
 #### 類別與方法
-- 所有類別名稱請使用帕斯卡命名法（PascalCase）
+- 所有類別名稱請使用**帕斯卡命名法（PascalCase）**
 
 ```php
 // bad
@@ -217,7 +218,7 @@ class articlesRepository {...}
 class ArticlesRepository {...}
 ```
 
-- 所有的 Resources Controller 名稱為複數
+- 所有的 Resources Controller 名稱為**複數**
 
 ```php
 // bad
@@ -227,7 +228,7 @@ class ArticleController extends Controller {...}
 class ArticlesController extends Controller {...}
 ```
 
-- 所有 Eloquent Model 名稱為單數
+- 所有 Eloquent Model 名稱為**單數**
 
 ```php
 // bad
@@ -237,7 +238,7 @@ class Users extends Model {...}
 class User extends Model {...}
 ```
 
-- 所有方法名稱請使用駝峰式命名法（camelCase）
+- 所有方法名稱請使用**駝峰式命名法（camelCase）**
 
 ```php
 // bad
@@ -249,7 +250,7 @@ public function createArticle {...}
 ```
 
 #### 變數
-- 所有 PHP 變數名稱請使用駝峰式命名法（camelCase）
+- 所有 PHP 變數名稱請使用**駝峰式命名法（camelCase）**
 
 ```php
 // bad
@@ -260,7 +261,7 @@ $Request_Data;
 $requestData;
 ```
 
-- 所有 HTTP 傳遞的參數名稱請使用蛇底式命名法（snake_case）
+- 所有 HTTP 傳遞的參數名稱請使用**蛇底式命名法（snake_case）**
 
 ```php
 // bad
