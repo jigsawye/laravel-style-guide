@@ -17,6 +17,8 @@
     - [程式碼相關]()
     - [命名相關]()
       - [資料表與欄位]()
+      - [Migration]()
+      - [Seeder]()
       - [類別與方法]()
       - [變數]()
 
@@ -204,6 +206,38 @@ $table->integer('userId');
 
 // good
 $table->integer('user_id');
+```
+
+#### Migration
+- 新建資料表的 migration 命名為 `create_{資料表名稱}_table`
+
+```shell
+// bad
+php artisan make:migration users --create=users
+
+// good
+php artisan make:migration create_users_table --create=users
+```
+
+- 增加欄位至原有資料表的 migration 命名為 `add_{欄位名稱}_to_{資料表名稱}_table`
+
+```shell
+// bad
+php artisan make:migration update_articles --table=users
+
+// good
+php artisan make:migration add_published_at_to_articles_table --create=users
+```
+
+#### Seeder
+- Seeder 請命名為 `{帕斯卡命名的單數資料表名稱}TableSeeder`
+
+```shell
+// bad
+php artisan make:seeder articles
+
+// good
+php artisan make:seeder ArticleTableSeeder
 ```
 
 #### 類別與方法
